@@ -1,0 +1,40 @@
+name: Quality and service integration
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: {version: '0.13.8', enable-cache: true}
+      - run: uv python install 3.12
+      - run: uv sync --frozen --extra dev --extra warehouse
+      - run: uv run ruff check .
+      - run: uv run pytest -m 'not services' --junitxml=artifacts/tests.xml
+      - run: uv run pip-audit --disable-pip --no-deps -r <(uv export --frozen --no-hashes --no-emit-project)
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: test-results, path: artifacts/tests.xml}
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: {version: '0.13.8'}
+      - run: uv sync --frozen --extra dev --extra warehouse
+      - run: uv run commerce bootstrap
+      - run: docker compose up -d postgres redpanda --wait
+      - name: Real service tests
+        run: |
+          set -a
+          source .env
+          set +a
+          export SERVICE_DATABASE_URL="postgresql+psycopg://commerce:${POSTGRES_PASSWORD}@127.0.0.1:5432/commerce"
+          export SERVICE_KAFKA_BOOTSTRAP_SERVERS="127.0.0.1:19092"
+          export CUSTOMER_HASH_KEY
+          uv run pytest -m services
+      - if: always()
+        run: docker compose down

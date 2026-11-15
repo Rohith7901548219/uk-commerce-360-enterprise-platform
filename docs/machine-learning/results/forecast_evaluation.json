@@ -1,0 +1,815 @@
+{
+  "selected_model": "holt_winters",
+  "horizon_days": 28,
+  "models": {
+    "naive": {
+      "development_mae": 16438.851547619048,
+      "folds": [
+        {
+          "origin": "2011-07-23 00:00:00",
+          "role": "development",
+          "mae": 13607.492142857142,
+          "rmse": 19118.844805857687,
+          "wape": 0.5449890657402148
+        },
+        {
+          "origin": "2011-08-20 00:00:00",
+          "role": "development",
+          "mae": 14428.002500000002,
+          "rmse": 17400.654920500736,
+          "wape": 0.5833355317575118
+        },
+        {
+          "origin": "2011-09-17 00:00:00",
+          "role": "development",
+          "mae": 21281.059999999998,
+          "rmse": 26419.442736354496,
+          "wape": 0.5755067435843185
+        },
+        {
+          "origin": "2011-11-12 00:00:00",
+          "role": "test",
+          "mae": 19973.43321428572,
+          "rmse": 27451.768250993216,
+          "wape": 0.41794866764768634
+        }
+      ]
+    },
+    "seasonal_naive": {
+      "development_mae": 14357.154642857144,
+      "folds": [
+        {
+          "origin": "2011-07-23 00:00:00",
+          "role": "development",
+          "mae": 12559.298571428573,
+          "rmse": 17525.952460707686,
+          "wape": 0.5030082195114982
+        },
+        {
+          "origin": "2011-08-20 00:00:00",
+          "role": "development",
+          "mae": 14357.609642857142,
+          "rmse": 17586.077051570916,
+          "wape": 0.5804894929691652
+        },
+        {
+          "origin": "2011-09-17 00:00:00",
+          "role": "development",
+          "mae": 16154.555714285712,
+          "rmse": 21193.26761935312,
+          "wape": 0.4368699563452204
+        },
+        {
+          "origin": "2011-11-12 00:00:00",
+          "role": "test",
+          "mae": 10880.098214285716,
+          "rmse": 14453.907877036107,
+          "wape": 0.22766854870419964
+        }
+      ]
+    },
+    "holt_winters": {
+      "development_mae": 10335.17619340851,
+      "folds": [
+        {
+          "origin": "2011-07-23 00:00:00",
+          "role": "development",
+          "mae": 9960.67573079771,
+          "rmse": 14002.35532516286,
+          "wape": 0.3989316549793627
+        },
+        {
+          "origin": "2011-08-20 00:00:00",
+          "role": "development",
+          "mae": 8687.874528288376,
+          "rmse": 11634.241439072182,
+          "wape": 0.3512576261198763
+        },
+        {
+          "origin": "2011-09-17 00:00:00",
+          "role": "development",
+          "mae": 12356.978321139444,
+          "rmse": 18304.71478994669,
+          "wape": 0.3341715287744587
+        },
+        {
+          "origin": "2011-11-12 00:00:00",
+          "role": "test",
+          "mae": 12561.388101844179,
+          "rmse": 16715.289112504142,
+          "wape": 0.2628499249300954
+        }
+      ]
+    },
+    "ridge_autoregression": {
+      "development_mae": 12163.049052111426,
+      "folds": [
+        {
+          "origin": "2011-07-23 00:00:00",
+          "role": "development",
+          "mae": 11818.4838333489,
+          "rmse": 15724.168645664242,
+          "wape": 0.473338098981276
+        },
+        {
+          "origin": "2011-08-20 00:00:00",
+          "role": "development",
+          "mae": 9977.834938893402,
+          "rmse": 13022.390887489477,
+          "wape": 0.4034117439242239
+        },
+        {
+          "origin": "2011-09-17 00:00:00",
+          "role": "development",
+          "mae": 14692.82838409198,
+          "rmse": 20384.015292091666,
+          "wape": 0.39734025548407936
+        },
+        {
+          "origin": "2011-11-12 00:00:00",
+          "role": "test",
+          "mae": 14364.215244836025,
+          "rmse": 19211.280659324046,
+          "wape": 0.30057449608061765
+        }
+      ]
+    }
+  },
+  "interval_method": "Approximate 90% absolute development-residual band; coverage is not guaranteed.",
+  "forecast_target": "Daily net sales GBP, including returns; missing calendar days are zero.",
+  "source_last_date": "2011-12-09",
+  "test_comparison": [
+    {
+      "date": "2011-11-12",
+      "model": "naive",
+      "actual": 0.0,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-13",
+      "model": "naive",
+      "actual": 33341.65,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-14",
+      "model": "naive",
+      "actual": 111958.62,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-15",
+      "model": "naive",
+      "actual": 60400.74,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-16",
+      "model": "naive",
+      "actual": 64123.06,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-17",
+      "model": "naive",
+      "actual": 60127.909999999996,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-18",
+      "model": "naive",
+      "actual": 47886.8,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-19",
+      "model": "naive",
+      "actual": 0.0,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-20",
+      "model": "naive",
+      "actual": 34352.65,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-21",
+      "model": "naive",
+      "actual": 48171.38,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-22",
+      "model": "naive",
+      "actual": 62080.98,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-23",
+      "model": "naive",
+      "actual": 78223.52,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-24",
+      "model": "naive",
+      "actual": 47860.86,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-25",
+      "model": "naive",
+      "actual": 50310.39,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-26",
+      "model": "naive",
+      "actual": 0.0,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-27",
+      "model": "naive",
+      "actual": 20239.79,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-28",
+      "model": "naive",
+      "actual": 55242.56,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-29",
+      "model": "naive",
+      "actual": 72008.09,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-30",
+      "model": "naive",
+      "actual": 59049.59,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-01",
+      "model": "naive",
+      "actual": 51282.33,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-02",
+      "model": "naive",
+      "actual": 56898.47,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-03",
+      "model": "naive",
+      "actual": 0.0,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-04",
+      "model": "naive",
+      "actual": 24421.82,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-05",
+      "model": "naive",
+      "actual": 57630.2,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-06",
+      "model": "naive",
+      "actual": 54109.39,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-07",
+      "model": "naive",
+      "actual": 74952.61,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-08",
+      "model": "naive",
+      "actual": 81294.33,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-09",
+      "model": "naive",
+      "actual": 32129.910000000003,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-12",
+      "model": "seasonal_naive",
+      "actual": 0.0,
+      "prediction": 0.0
+    },
+    {
+      "date": "2011-11-13",
+      "model": "seasonal_naive",
+      "actual": 33341.65,
+      "prediction": 42479.65
+    },
+    {
+      "date": "2011-11-14",
+      "model": "seasonal_naive",
+      "actual": 111958.62,
+      "prediction": 69824.57
+    },
+    {
+      "date": "2011-11-15",
+      "model": "seasonal_naive",
+      "actual": 60400.74,
+      "prediction": 56504.45
+    },
+    {
+      "date": "2011-11-16",
+      "model": "seasonal_naive",
+      "actual": 64123.06,
+      "prediction": 62351.83
+    },
+    {
+      "date": "2011-11-17",
+      "model": "seasonal_naive",
+      "actual": 60127.909999999996,
+      "prediction": 68815.98
+    },
+    {
+      "date": "2011-11-18",
+      "model": "seasonal_naive",
+      "actual": 47886.8,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-19",
+      "model": "seasonal_naive",
+      "actual": 0.0,
+      "prediction": 0.0
+    },
+    {
+      "date": "2011-11-20",
+      "model": "seasonal_naive",
+      "actual": 34352.65,
+      "prediction": 42479.65
+    },
+    {
+      "date": "2011-11-21",
+      "model": "seasonal_naive",
+      "actual": 48171.38,
+      "prediction": 69824.57
+    },
+    {
+      "date": "2011-11-22",
+      "model": "seasonal_naive",
+      "actual": 62080.98,
+      "prediction": 56504.45
+    },
+    {
+      "date": "2011-11-23",
+      "model": "seasonal_naive",
+      "actual": 78223.52,
+      "prediction": 62351.83
+    },
+    {
+      "date": "2011-11-24",
+      "model": "seasonal_naive",
+      "actual": 47860.86,
+      "prediction": 68815.98
+    },
+    {
+      "date": "2011-11-25",
+      "model": "seasonal_naive",
+      "actual": 50310.39,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-26",
+      "model": "seasonal_naive",
+      "actual": 0.0,
+      "prediction": 0.0
+    },
+    {
+      "date": "2011-11-27",
+      "model": "seasonal_naive",
+      "actual": 20239.79,
+      "prediction": 42479.65
+    },
+    {
+      "date": "2011-11-28",
+      "model": "seasonal_naive",
+      "actual": 55242.56,
+      "prediction": 69824.57
+    },
+    {
+      "date": "2011-11-29",
+      "model": "seasonal_naive",
+      "actual": 72008.09,
+      "prediction": 56504.45
+    },
+    {
+      "date": "2011-11-30",
+      "model": "seasonal_naive",
+      "actual": 59049.59,
+      "prediction": 62351.83
+    },
+    {
+      "date": "2011-12-01",
+      "model": "seasonal_naive",
+      "actual": 51282.33,
+      "prediction": 68815.98
+    },
+    {
+      "date": "2011-12-02",
+      "model": "seasonal_naive",
+      "actual": 56898.47,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-12-03",
+      "model": "seasonal_naive",
+      "actual": 0.0,
+      "prediction": 0.0
+    },
+    {
+      "date": "2011-12-04",
+      "model": "seasonal_naive",
+      "actual": 24421.82,
+      "prediction": 42479.65
+    },
+    {
+      "date": "2011-12-05",
+      "model": "seasonal_naive",
+      "actual": 57630.2,
+      "prediction": 69824.57
+    },
+    {
+      "date": "2011-12-06",
+      "model": "seasonal_naive",
+      "actual": 54109.39,
+      "prediction": 56504.45
+    },
+    {
+      "date": "2011-12-07",
+      "model": "seasonal_naive",
+      "actual": 74952.61,
+      "prediction": 62351.83
+    },
+    {
+      "date": "2011-12-08",
+      "model": "seasonal_naive",
+      "actual": 81294.33,
+      "prediction": 68815.98
+    },
+    {
+      "date": "2011-12-09",
+      "model": "seasonal_naive",
+      "actual": 32129.910000000003,
+      "prediction": 54686.21
+    },
+    {
+      "date": "2011-11-12",
+      "model": "holt_winters",
+      "actual": 0.0,
+      "prediction": 18967.585588005688
+    },
+    {
+      "date": "2011-11-13",
+      "model": "holt_winters",
+      "actual": 33341.65,
+      "prediction": 39578.33449524682
+    },
+    {
+      "date": "2011-11-14",
+      "model": "holt_winters",
+      "actual": 111958.62,
+      "prediction": 56104.01928157882
+    },
+    {
+      "date": "2011-11-15",
+      "model": "holt_winters",
+      "actual": 60400.74,
+      "prediction": 59307.883369741205
+    },
+    {
+      "date": "2011-11-16",
+      "model": "holt_winters",
+      "actual": 64123.06,
+      "prediction": 56475.80149104159
+    },
+    {
+      "date": "2011-11-17",
+      "model": "holt_winters",
+      "actual": 60127.909999999996,
+      "prediction": 66431.62356345271
+    },
+    {
+      "date": "2011-11-18",
+      "model": "holt_winters",
+      "actual": 47886.8,
+      "prediction": 54515.855365622956
+    },
+    {
+      "date": "2011-11-19",
+      "model": "holt_winters",
+      "actual": 0.0,
+      "prediction": 19094.639508521246
+    },
+    {
+      "date": "2011-11-20",
+      "model": "holt_winters",
+      "actual": 34352.65,
+      "prediction": 39705.388415762376
+    },
+    {
+      "date": "2011-11-21",
+      "model": "holt_winters",
+      "actual": 48171.38,
+      "prediction": 56231.07320209437
+    },
+    {
+      "date": "2011-11-22",
+      "model": "holt_winters",
+      "actual": 62080.98,
+      "prediction": 59434.93729025676
+    },
+    {
+      "date": "2011-11-23",
+      "model": "holt_winters",
+      "actual": 78223.52,
+      "prediction": 56602.855411557146
+    },
+    {
+      "date": "2011-11-24",
+      "model": "holt_winters",
+      "actual": 47860.86,
+      "prediction": 66558.67748396828
+    },
+    {
+      "date": "2011-11-25",
+      "model": "holt_winters",
+      "actual": 50310.39,
+      "prediction": 54642.909286138514
+    },
+    {
+      "date": "2011-11-26",
+      "model": "holt_winters",
+      "actual": 0.0,
+      "prediction": 19221.693429036804
+    },
+    {
+      "date": "2011-11-27",
+      "model": "holt_winters",
+      "actual": 20239.79,
+      "prediction": 39832.442336277934
+    },
+    {
+      "date": "2011-11-28",
+      "model": "holt_winters",
+      "actual": 55242.56,
+      "prediction": 56358.127122609934
+    },
+    {
+      "date": "2011-11-29",
+      "model": "holt_winters",
+      "actual": 72008.09,
+      "prediction": 59561.99121077232
+    },
+    {
+      "date": "2011-11-30",
+      "model": "holt_winters",
+      "actual": 59049.59,
+      "prediction": 56729.90933207271
+    },
+    {
+      "date": "2011-12-01",
+      "model": "holt_winters",
+      "actual": 51282.33,
+      "prediction": 66685.73140448383
+    },
+    {
+      "date": "2011-12-02",
+      "model": "holt_winters",
+      "actual": 56898.47,
+      "prediction": 54769.96320665407
+    },
+    {
+      "date": "2011-12-03",
+      "model": "holt_winters",
+      "actual": 0.0,
+      "prediction": 19348.747349552363
+    },
+    {
+      "date": "2011-12-04",
+      "model": "holt_winters",
+      "actual": 24421.82,
+      "prediction": 39959.49625679349
+    },
+    {
+      "date": "2011-12-05",
+      "model": "holt_winters",
+      "actual": 57630.2,
+      "prediction": 56485.181043125485
+    },
+    {
+      "date": "2011-12-06",
+      "model": "holt_winters",
+      "actual": 54109.39,
+      "prediction": 59689.04513128788
+    },
+    {
+      "date": "2011-12-07",
+      "model": "holt_winters",
+      "actual": 74952.61,
+      "prediction": 56856.96325258827
+    },
+    {
+      "date": "2011-12-08",
+      "model": "holt_winters",
+      "actual": 81294.33,
+      "prediction": 66812.7853249994
+    },
+    {
+      "date": "2011-12-09",
+      "model": "holt_winters",
+      "actual": 32129.910000000003,
+      "prediction": 54897.01712716963
+    },
+    {
+      "date": "2011-11-12",
+      "model": "ridge_autoregression",
+      "actual": 0.0,
+      "prediction": 12271.64578335085
+    },
+    {
+      "date": "2011-11-13",
+      "model": "ridge_autoregression",
+      "actual": 33341.65,
+      "prediction": 28192.17973179799
+    },
+    {
+      "date": "2011-11-14",
+      "model": "ridge_autoregression",
+      "actual": 111958.62,
+      "prediction": 49256.11836317417
+    },
+    {
+      "date": "2011-11-15",
+      "model": "ridge_autoregression",
+      "actual": 60400.74,
+      "prediction": 47450.544255844
+    },
+    {
+      "date": "2011-11-16",
+      "model": "ridge_autoregression",
+      "actual": 64123.06,
+      "prediction": 49941.3993773123
+    },
+    {
+      "date": "2011-11-17",
+      "model": "ridge_autoregression",
+      "actual": 60127.909999999996,
+      "prediction": 55265.081175373736
+    },
+    {
+      "date": "2011-11-18",
+      "model": "ridge_autoregression",
+      "actual": 47886.8,
+      "prediction": 48457.8412693447
+    },
+    {
+      "date": "2011-11-19",
+      "model": "ridge_autoregression",
+      "actual": 0.0,
+      "prediction": 15045.166754581842
+    },
+    {
+      "date": "2011-11-20",
+      "model": "ridge_autoregression",
+      "actual": 34352.65,
+      "prediction": 24426.974529224262
+    },
+    {
+      "date": "2011-11-21",
+      "model": "ridge_autoregression",
+      "actual": 48171.38,
+      "prediction": 44401.85591472351
+    },
+    {
+      "date": "2011-11-22",
+      "model": "ridge_autoregression",
+      "actual": 62080.98,
+      "prediction": 47871.031741990846
+    },
+    {
+      "date": "2011-11-23",
+      "model": "ridge_autoregression",
+      "actual": 78223.52,
+      "prediction": 49115.81161522088
+    },
+    {
+      "date": "2011-11-24",
+      "model": "ridge_autoregression",
+      "actual": 47860.86,
+      "prediction": 50206.586391957535
+    },
+    {
+      "date": "2011-11-25",
+      "model": "ridge_autoregression",
+      "actual": 50310.39,
+      "prediction": 41868.069788625166
+    },
+    {
+      "date": "2011-11-26",
+      "model": "ridge_autoregression",
+      "actual": 0.0,
+      "prediction": 16738.450406992823
+    },
+    {
+      "date": "2011-11-27",
+      "model": "ridge_autoregression",
+      "actual": 20239.79,
+      "prediction": 23490.718442368387
+    },
+    {
+      "date": "2011-11-28",
+      "model": "ridge_autoregression",
+      "actual": 55242.56,
+      "prediction": 40153.79787394927
+    },
+    {
+      "date": "2011-11-29",
+      "model": "ridge_autoregression",
+      "actual": 72008.09,
+      "prediction": 44216.095220331306
+    },
+    {
+      "date": "2011-11-30",
+      "model": "ridge_autoregression",
+      "actual": 59049.59,
+      "prediction": 46742.377777887836
+    },
+    {
+      "date": "2011-12-01",
+      "model": "ridge_autoregression",
+      "actual": 51282.33,
+      "prediction": 47354.29630724511
+    },
+    {
+      "date": "2011-12-02",
+      "model": "ridge_autoregression",
+      "actual": 56898.47,
+      "prediction": 40236.395099575144
+    },
+    {
+      "date": "2011-12-03",
+      "model": "ridge_autoregression",
+      "actual": 0.0,
+      "prediction": 17445.26983126819
+    },
+    {
+      "date": "2011-12-04",
+      "model": "ridge_autoregression",
+      "actual": 24421.82,
+      "prediction": 23564.686214632726
+    },
+    {
+      "date": "2011-12-05",
+      "model": "ridge_autoregression",
+      "actual": 57630.2,
+      "prediction": 40274.39252888105
+    },
+    {
+      "date": "2011-12-06",
+      "model": "ridge_autoregression",
+      "actual": 54109.39,
+      "prediction": 46176.42465056176
+    },
+    {
+      "date": "2011-12-07",
+      "model": "ridge_autoregression",
+      "actual": 74952.61,
+      "prediction": 48131.445817661166
+    },
+    {
+      "date": "2011-12-08",
+      "model": "ridge_autoregression",
+      "actual": 81294.33,
+      "prediction": 46490.42692718853
+    },
+    {
+      "date": "2011-12-09",
+      "model": "ridge_autoregression",
+      "actual": 32129.910000000003,
+      "prediction": 37808.822886745154
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "source_id": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+      "filename": "online_retail_II.mirror.xlsx",
+      "source_kind": "UCI_MIRROR",
+      "imported_at": "2026-11-15 05:06:32.796375+05:30",
+      "rows_imported": 1067371,
+      "complete": true
+    }
+  ],
+  "features": [
+    "recency",
+    "frequency",
+    "monetary",
+    "average_order_value",
+    "tenure",
+    "product_diversity",
+    "mean_interval"
+  ],
+  "random_seed": 42,
+  "training_time": "2026-11-15T03:10:56.654543+00:00",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "mlflow-skinny": "3.18.0"
+  }
+}

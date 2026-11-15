@@ -1,0 +1,6 @@
+{"version":"2.0.0","tasks":[
+ {"label":"Commerce: setup","type":"shell","command":"powershell -ExecutionPolicy Bypass -File scripts/setup.ps1","problemMatcher":[]},
+ {"label":"Commerce: start","type":"shell","command":"powershell -ExecutionPolicy Bypass -File scripts/start.ps1","problemMatcher":[]},
+ {"label":"Commerce: verify","type":"shell","command":"powershell -ExecutionPolicy Bypass -File scripts/verify.ps1","group":"test","problemMatcher":[]},
+ {"label":"Commerce: stop","type":"shell","command":"powershell -ExecutionPolicy Bypass -File scripts/stop.ps1","problemMatcher":[]}
+]}

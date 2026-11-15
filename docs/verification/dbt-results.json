@@ -1,0 +1,107 @@
+{
+  "results": [
+    {
+      "unique_id": "test.uk_commerce_360.source_not_null_warehouse_fact_sales_transactions_transaction_id.cfe5c0c1e6",
+      "status": "pass",
+      "execution_time": 0.21834659576416016,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.source_relationships_warehouse_fact_sales_transactions_stock_code__stock_code__source_warehouse_dim_product_.1554da5a4c",
+      "status": "pass",
+      "execution_time": 0.6695854663848877,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.source_unique_warehouse_fact_sales_transactions_transaction_id.577a6b6bfb",
+      "status": "pass",
+      "execution_time": 2.866478204727173,
+      "message": null
+    },
+    {
+      "unique_id": "model.uk_commerce_360.stg_all_transactions",
+      "status": "success",
+      "execution_time": 0.233201265335083,
+      "message": "CREATE VIEW"
+    },
+    {
+      "unique_id": "model.uk_commerce_360.mart_customer_rfm",
+      "status": "success",
+      "execution_time": 0.23920226097106934,
+      "message": "CREATE VIEW"
+    },
+    {
+      "unique_id": "model.uk_commerce_360.mart_customer_cohorts",
+      "status": "success",
+      "execution_time": 0.2425248622894287,
+      "message": "CREATE VIEW"
+    },
+    {
+      "unique_id": "model.uk_commerce_360.mart_product_performance",
+      "status": "success",
+      "execution_time": 0.17085909843444824,
+      "message": "CREATE VIEW"
+    },
+    {
+      "unique_id": "model.uk_commerce_360.mart_daily_sales",
+      "status": "success",
+      "execution_time": 0.5335993766784668,
+      "message": "INSERT 0 28"
+    },
+    {
+      "unique_id": "test.uk_commerce_360.not_null_mart_customer_cohorts_retention_rate.fe76472e6e",
+      "status": "pass",
+      "execution_time": 1.1519079208374023,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.not_null_mart_daily_sales_date_key.2e6aa22079",
+      "status": "pass",
+      "execution_time": 0.06423807144165039,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.unique_mart_customer_rfm_customer_key.d760251f07",
+      "status": "pass",
+      "execution_time": 1.6241259574890137,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.not_null_mart_customer_rfm_customer_key.75a07d2b74",
+      "status": "pass",
+      "execution_time": 1.6667766571044922,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.unique_mart_daily_sales_date_key.8202e63487",
+      "status": "pass",
+      "execution_time": 0.0671231746673584,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.revenue_reconciliation",
+      "status": "pass",
+      "execution_time": 0.4072294235229492,
+      "message": null
+    },
+    {
+      "unique_id": "test.uk_commerce_360.retention_bounds",
+      "status": "pass",
+      "execution_time": 1.2926013469696045,
+      "message": null
+    },
+    {
+      "unique_id": "model.uk_commerce_360.mart_monthly_sales",
+      "status": "success",
+      "execution_time": 0.07218050956726074,
+      "message": "CREATE VIEW"
+    },
+    {
+      "unique_id": "model.uk_commerce_360.mart_customer_retention",
+      "status": "success",
+      "execution_time": 0.17787528038024902,
+      "message": "CREATE VIEW"
+    }
+  ],
+  "elapsed_time": 5.6575093269348145
+}

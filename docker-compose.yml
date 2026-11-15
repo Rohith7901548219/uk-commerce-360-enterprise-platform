@@ -1,0 +1,90 @@
+name: uk-commerce-360
+x-app: &app
+  build: .
+  env_file: .env
+  environment: &environment
+    DATABASE_URL: postgresql+psycopg://commerce:${POSTGRES_PASSWORD:?Run setup first}@postgres:5432/commerce
+    POSTGRES_HOST: postgres
+    API_BASE_URL: http://api:8000
+    KAFKA_BOOTSTRAP_SERVERS: redpanda:9092
+  volumes:
+    - ./data/raw:/workspace/data/raw
+    - ./artifacts:/workspace/artifacts
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: postgres:17.12
+    environment:
+      POSTGRES_DB: commerce
+      POSTGRES_USER: commerce
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run setup first}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: ["warehouse:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U commerce -d commerce"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v26.2.7
+    command:
+      - redpanda
+      - start
+      - --mode=dev-container
+      - --smp=1
+      - --memory=1G
+      - --reserve-memory=0M
+      - --overprovisioned
+      - --kafka-addr=internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr=internal://redpanda:9092,external://127.0.0.1:19092
+    ports: ["127.0.0.1:19092:19092", "127.0.0.1:19644:9644"]
+    volumes: ["broker:/var/lib/redpanda/data"]
+    healthcheck:
+      test: ["CMD", "rpk", "cluster", "info", "-X", "brokers=127.0.0.1:9092"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+  init:
+    <<: *app
+    restart: 'no'
+    depends_on:
+      postgres: {condition: service_healthy}
+    command: ["python", "scripts/initialize_stack.py"]
+  api:
+    <<: *app
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      init: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready')"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+  dashboard:
+    <<: *app
+    command: ["streamlit", "run", "app/dashboard.py", "--server.address=0.0.0.0"]
+    ports: ["127.0.0.1:8501:8501"]
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  consumer:
+    <<: *app
+    command: ["commerce", "consumer"]
+    depends_on:
+      init: {condition: service_completed_successfully}
+      redpanda: {condition: service_healthy}
+  replay:
+    <<: *app
+    command: ["commerce", "replay"]
+    profiles: [replay]
+    depends_on:
+      init: {condition: service_completed_successfully}
+      redpanda: {condition: service_healthy}
+volumes:
+  warehouse:
+  broker:

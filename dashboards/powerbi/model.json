@@ -1,0 +1,18 @@
+{
+  "name": "UK Commerce 360 Historical Retail", "source": "PostgreSQL public and analytics schemas",
+  "relationships": [
+    ["dim_customer.customer_key", "fact_sales_transactions.customer_key", "one-to-many", "single"],
+    ["dim_customer.customer_key", "fact_returns.customer_key", "one-to-many", "single"],
+    ["dim_product.stock_code", "fact_sales_transactions.stock_code", "one-to-many", "single"],
+    ["dim_product.stock_code", "fact_returns.stock_code", "one-to-many", "single"],
+    ["dim_country.country", "fact_sales_transactions.country", "one-to-many", "single"],
+    ["dim_country.country", "fact_returns.country", "one-to-many", "single"],
+    ["dim_date.date_key", "fact_sales_transactions.date_key", "one-to-many", "single"],
+    ["dim_date.date_key", "fact_returns.date_key", "one-to-many", "single"]
+  ],
+  "additional_tables": ["mart_customer_predictions", "mart_revenue_forecasts", "data_quality_results", "analytics.mart_customer_cohorts", "analytics.mart_customer_rfm"],
+  "date_table": "dim_date; extend to a continuous daily calendar before time-intelligence measures",
+  "hidden_fields": ["transaction_id", "customer_key", "unit_price"],
+  "prohibited_public_tables": ["raw_retail_transactions", "source_files"],
+  "label": "Historical transactions, 2009–2011; independent portfolio project"
+}

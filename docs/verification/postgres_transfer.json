@@ -1,0 +1,22 @@
+{
+  "verified_at": "2026-11-15T00:47:41.383697+00:00",
+  "counts": {
+    "data_quality_results": 22,
+    "dim_country": 43,
+    "dim_customer": 5939,
+    "dim_date": 604,
+    "dim_product": 4760,
+    "mart_revenue_forecasts": 28,
+    "model_execution_logs": 2,
+    "pipeline_execution_logs": 2,
+    "source_files": 1,
+    "stream_events": 0,
+    "stream_runtime": 0,
+    "fact_customer_activity": 36969,
+    "mart_customer_predictions": 3477,
+    "raw_retail_transactions": 1067371,
+    "fact_returns": 19104,
+    "fact_sales_transactions": 1007913,
+    "stg_retail_transactions": 1067371
+  }
+}

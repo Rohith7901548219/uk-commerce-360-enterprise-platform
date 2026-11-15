@@ -1,0 +1,9 @@
+name: uk_commerce_360
+version: '1.0.0'
+config-version: 2
+profile: uk_commerce_360
+model-paths: [models]
+test-paths: [tests]
+models:
+  uk_commerce_360:
+    +materialized: view

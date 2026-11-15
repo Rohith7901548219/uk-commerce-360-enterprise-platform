@@ -1,0 +1,6 @@
+{
+  "customers_compared": 5726,
+  "unchanged_segment_rate": 0.7843171498428222,
+  "comparison_days": 30,
+  "note": "Business RFM segments; percentile thresholds are recalculated at each snapshot."
+}

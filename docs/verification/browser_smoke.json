@@ -1,0 +1,57 @@
+[
+  {
+    "page": "Executive Overview",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Revenue Analytics",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Customer 360\u00b0",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Product Intelligence",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Marketing Intelligence",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Retention Prediction",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Revenue Forecasting",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Real-Time Transaction Monitor",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Business Scenario Simulator",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "Data Engineering & Model Monitoring",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  },
+  {
+    "page": "About / Architecture / Data Methodology",
+    "exception_count": 0,
+    "url": "http://127.0.0.1:8501/"
+  }
+]

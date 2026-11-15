@@ -1,0 +1,1 @@
+{"version":"0.2.0","configurations":[{"name":"FastAPI","type":"debugpy","request":"launch","module":"uvicorn","args":["commerce.api:app","--reload","--host","127.0.0.1"],"jinja":true},{"name":"Pipeline","type":"debugpy","request":"launch","module":"commerce.cli","args":["pipeline"]}]}

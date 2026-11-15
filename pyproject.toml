@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "uk-commerce-360"
+version = "0.1.0"
+description = "Historical UK retail intelligence, reproducible analytics and genuine transaction replay"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "pandas>=2.2,<3", "numpy>=2,<3", "scipy>=1.14,<2",
+  "sqlalchemy>=2.0,<2.1", "alembic>=1.14,<2", "psycopg[binary]>=3.2,<4",
+  "fastapi>=0.115,<1", "uvicorn>=0.34,<1", "pydantic-settings>=2.7,<3",
+  "streamlit>=1.42,<2", "plotly>=6,<7", "httpx>=0.28,<1",
+  "openpyxl>=3.1,<4", "scikit-learn>=1.6,<2", "joblib>=1.4,<2",
+  "mlflow-skinny>=2.20,<4", "confluent-kafka>=2.8,<3", "statsmodels>=0.14,<1"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "pip-audit>=2.8,<3", "playwright>=1.50,<2"]
+warehouse = ["dbt-postgres>=1.9,<2"]
+
+[project.scripts]
+commerce = "commerce.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/commerce"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["services: requires PostgreSQL and Redpanda"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = [".tools", ".venv", "artifacts", "data", "dbt/target", ".local"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

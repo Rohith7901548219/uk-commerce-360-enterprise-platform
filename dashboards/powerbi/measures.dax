@@ -1,0 +1,16 @@
+// Create a dedicated Measures table. Currency format: £#,##0.00; blank-safe ratios.
+Gross Sales = SUM(fact_sales_transactions[amount])
+Returns = -SUM(fact_returns[amount])
+Net Sales = [Gross Sales] - [Returns]
+Orders = DISTINCTCOUNT(fact_sales_transactions[invoice])
+Identifiable Customers = CALCULATE(DISTINCTCOUNT(fact_sales_transactions[customer_key]), NOT ISBLANK(fact_sales_transactions[customer_key]))
+Average Order Value = DIVIDE([Gross Sales], [Orders])
+Repeat Customers = COUNTROWS(FILTER(ADDCOLUMNS(FILTER(VALUES(dim_customer[customer_key]), NOT ISBLANK(dim_customer[customer_key])), "OrderCount", CALCULATE(DISTINCTCOUNT(fact_sales_transactions[invoice]))), [OrderCount] > 1))
+Repeat Purchase Rate = DIVIDE([Repeat Customers], [Identifiable Customers])
+Net Sales Previous Year = CALCULATE([Net Sales], DATEADD(dim_date[date_key], -1, YEAR))
+Net Sales YoY = DIVIDE([Net Sales] - [Net Sales Previous Year], [Net Sales Previous Year])
+Rolling 28 Day Net Sales = CALCULATE([Net Sales], DATESINPERIOD(dim_date[date_key], MAX(dim_date[date_key]), -28, DAY))
+Return Unit Rate = DIVIDE(-SUM(fact_returns[quantity]), SUM(fact_sales_transactions[quantity]))
+Forecast GBP = SUM(mart_revenue_forecasts[prediction])
+// Scenario inputs require What-if parameters; they are not observed profit or campaign results.
+Scenario Incremental Revenue = SELECTEDVALUE(ScenarioAudience[Value],1000) * SELECTEDVALUE(ScenarioResponse[Value],0.1) * SELECTEDVALUE(ScenarioIncrementality[Value],0.5) * SELECTEDVALUE(ScenarioAOV[Value],60)

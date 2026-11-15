@@ -1,0 +1,11 @@
+.venv
+.tools
+.env
+.git
+.local
+data/raw
+data/warehouse
+data/processed
+artifacts
+__pycache__
+.pytest_cache

@@ -1,0 +1,97 @@
+{
+  "verified_at": "2026-11-15T13:25:42.558936+00:00",
+  "endpoints": [
+    {
+      "endpoint": "/health",
+      "status": 200,
+      "elapsed_seconds": 0.009
+    },
+    {
+      "endpoint": "/ready",
+      "status": 200,
+      "elapsed_seconds": 0.079
+    },
+    {
+      "endpoint": "/api/v1/kpis",
+      "status": 200,
+      "elapsed_seconds": 1.56
+    },
+    {
+      "endpoint": "/api/v1/sales?limit=2",
+      "status": 200,
+      "elapsed_seconds": 0.096
+    },
+    {
+      "endpoint": "/api/v1/sales/trends?frequency=MS",
+      "status": 200,
+      "elapsed_seconds": 3.118
+    },
+    {
+      "endpoint": "/api/v1/customers?limit=2",
+      "status": 200,
+      "elapsed_seconds": 0.601
+    },
+    {
+      "endpoint": "/api/v1/customers/segments",
+      "status": 200,
+      "elapsed_seconds": 0.357
+    },
+    {
+      "endpoint": "/api/v1/customers/retention",
+      "status": 200,
+      "elapsed_seconds": 0.603
+    },
+    {
+      "endpoint": "/api/v1/products?limit=2",
+      "status": 200,
+      "elapsed_seconds": 1.265
+    },
+    {
+      "endpoint": "/api/v1/products?sort=revenue_asc&limit=2",
+      "status": 200,
+      "elapsed_seconds": 1.282
+    },
+    {
+      "endpoint": "/api/v1/forecasts",
+      "status": 200,
+      "elapsed_seconds": 0.019
+    },
+    {
+      "endpoint": "/api/v1/predictions/repurchase?limit=2",
+      "status": 200,
+      "elapsed_seconds": 0.018
+    },
+    {
+      "endpoint": "/api/v1/data-quality",
+      "status": 200,
+      "elapsed_seconds": 0.01
+    },
+    {
+      "endpoint": "/api/v1/models/status",
+      "status": 200,
+      "elapsed_seconds": 0.04
+    },
+    {
+      "endpoint": "/api/v1/stream/status",
+      "status": 200,
+      "elapsed_seconds": 0.018
+    },
+    {
+      "endpoint": "/api/v1/stream/events?limit=2",
+      "status": 200,
+      "elapsed_seconds": 0.006
+    },
+    {
+      "endpoint": "/openapi.json",
+      "status": 200,
+      "elapsed_seconds": 0.201
+    }
+  ],
+  "dashboard_health": 200,
+  "unauthenticated_write": 401,
+  "scenario_verified": true,
+  "budget_allocation_verified": true,
+  "authenticated_historical_prediction_verified": true,
+  "database": "postgresql",
+  "note": "Individual local checks, not a load-test or SLA claim"
+}

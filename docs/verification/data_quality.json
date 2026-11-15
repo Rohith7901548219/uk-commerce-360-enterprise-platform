@@ -1,0 +1,13 @@
+{
+  "imported": 1067371,
+  "accepted": 1027017,
+  "non_merchandise_code": 6093,
+  "cancellation": 19494,
+  "return": 22951,
+  "quarantined": 6019,
+  "invalid_price": 6207,
+  "missing_customer": 243007,
+  "duplicate": 34335,
+  "missing_description": 4382,
+  "reconciled": 1
+}
