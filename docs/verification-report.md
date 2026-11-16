@@ -1,6 +1,6 @@
 # GitHub publication verification report
 
-Prepared 16 November 2026 (Asia/Kolkata). **Published publicly; hosted CI correction in progress.**
+Prepared 16 November 2026 (Asia/Kolkata). **Published publicly; hosted quality CI passed.**
 Target: Rohith7901548219/uk-commerce-360-enterprise-platform. The owner explicitly
 approved this security review and public publication after reviewing the prepared
 package. Repository creation, commit/push and remote verification are authorized.
@@ -32,18 +32,25 @@ created and the reviewed source commit pushed successfully:
 ## Online publication verification
 
 The first published commit is c013a1b7475453fe8148629872a9b22edb7bd897, preserving
-the original commit. GitHub's main-branch SHA matched local HEAD; the remote tree
-contained the same 151 files. GitHub's rendered README included the dashboard image.
+the original commit. The corrected source commit is
+61f23edec62976158c1f2c92f4b5a16d02e0f5c9. At verification, GitHub's main-branch SHA
+matched local HEAD and the remote tree contained the same 152 files, including the
+new verification evidence. GitHub's rendered README included the dashboard image.
 All five public PNGs were fetched without authentication and their bytes matched
 the local screenshots. Timestamped evidence is in
 [GitHub verification](verification/publication-github.json).
 
-The first [hosted run](https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform/actions/runs/43780007650)
-passed environment setup and Ruff, then exposed a pytest collection-path issue in
-the audit tests. The repository root is now explicitly configured on pytest's import
-path. The isolated-copy checker now invokes the pytest console script used by CI.
-The corrected console invocation passed all 54 fixture tests locally; the hosted
-rerun remains pending. Optional service CI has not been run.
+The [successful hosted run](https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform/actions/runs/43780559003)
+passed Ruff, all 54 fixture tests, the full-history publication audit and the locked
+dependency scan. Downloaded artifacts confirm zero test failures/errors, zero
+security findings, zero broken local links and 145 packages with no known reported
+vulnerabilities. The hosted history scan covered three commits / 170 blobs.
+Optional service CI was skipped and is not claimed as verified.
+
+The initial hosted run exposed an audit-test import-path issue, fixed by explicitly
+adding the repository root to pytest's import path. The isolated-copy checker now
+invokes the pytest console script used by CI; all 54 tests also passed there without
+private project files or credential environment variables.
 
 ## Scope and source inventory
 
@@ -62,7 +69,7 @@ No empty folders or superficial duplicated source trees were created.
 | Non-service Pytest | 54 passed, 2 service tests deselected; 13 upstream deprecation warnings |
 | Security guard regression | Removed historical fake credential still blocks publication; ignored local config remains on disk |
 | Working publication candidates | Approved release: 151 files; publication evidence is audited before subsequent pushes; no detected credential or prohibited-path findings |
-| Reachable Git history | Original approval scanned one commit / 130 blobs; pre-push scan included two commits / 162 blobs, with no findings |
+| Reachable Git history | Original approval scanned one commit / 130 blobs; successful hosted scan covered three commits / 170 blobs, with no findings |
 | Reviewed sample exception | Only data/fixtures/retail.csv: nine synthetic rows, SHA256 5f3e3c9d689d368c4817e314ded28235d002cc8fb92832fb94af5b7eaa752556 |
 | Documentation links | Refreshed publication scan found no broken local links |
 | Existing screenshots | Capture timing corrected; all 11 completed pages checked and five genuine screenshots recaptured and manually reviewed |
@@ -75,7 +82,7 @@ No empty folders or superficial duplicated source trees were created.
 | Isolated publication copy | PASS: all 54 tests and the security audit passed without .env, raw data, model binaries or private credential environment variables; existing installed dependencies were reused |
 | GitHub CLI | Official checksum-verified portable CLI; official browser authorization completed |
 | Authentication / target remote | Verified as owner-approved Rohith7901548219; public repository created, HTTPS origin configured and first source commit pushed; local/remote SHA match |
-| GitHub-hosted CI | First real run failed during audit-test collection; import-path correction passed 54 local tests; hosted rerun pending |
+| GitHub-hosted CI | PASS: run 43780559003 on source commit 61f23ed; 54 tests, full-history audit and 145-package advisory scan; optional services job skipped |
 
 New execution evidence is stored as publication-* artifacts under
 [verification](verification), including [tests](verification/publication-tests.xml),
@@ -118,13 +125,13 @@ If an actual historical secret is discovered, publication must stop for owner re
 * Repurchase threshold recall is low; selected forecasting lost to seasonal-naive on the
   final test. No causal ROI, profit, uplift, customers or employment experience is claimed.
 
-## Publication gate
+## Publication authorization and safeguards
 
-Only publish after explicit owner approval of both this security review and repository
-visibility, completed authentication as Rohith7901548219, and safe inspection/preservation
-of any existing remote work. Never force-push. Verify the remote SHA equals local HEAD
-and inspect the actual GitHub Actions run after an approved push. A private-repository
-choice requires an explicit owner response too. No publication is implied by browser login.
+The owner explicitly approved both this security review and public repository
+visibility on 16 November 2026. Authentication as Rohith7901548219 was verified and
+the approved normal pushes preserved the original history. Never force-push or add
+excluded private data. Audit subsequent changes, verify remote SHA against local
+HEAD and inspect the actual GitHub Actions result after pushing.
 
 Official browser authorization is complete and the GitHub API confirms the active
 account is Rohith7901548219, now explicitly selected by the owner. The abandoned

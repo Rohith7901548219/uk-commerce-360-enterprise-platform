@@ -1,12 +1,12 @@
 {
-  "verified_at": "2026-11-16T00:26:04.032485+00:00",
+  "verified_at": "2026-11-16T00:28:43.466159+00:00",
   "repository": "Rohith7901548219/uk-commerce-360-enterprise-platform",
   "url": "https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform",
   "visibility": "public",
   "default_branch": "main",
-  "remote_sha": "c013a1b7475453fe8148629872a9b22edb7bd897",
+  "remote_sha": "61f23edec62976158c1f2c92f4b5a16d02e0f5c9",
   "local_sha_matches": true,
-  "remote_file_count": 151,
+  "remote_file_count": 152,
   "readme_matches_local": true,
   "rendered_readme_image_found": true,
   "screenshots": [
@@ -36,5 +36,24 @@
       "sha256_matches_local": true
     }
   ],
-  "scope": "Actual GitHub API README rendering, remote Git tree and commit SHA; all five PNGs fetched anonymously and byte-verified. Hosted CI recorded separately."
+  "scope": "Actual GitHub API README rendering, remote Git tree and commit SHA; all five PNGs fetched anonymously and byte-verified. Hosted CI recorded separately.",
+  "hosted_ci": {
+    "run_id": 43780559003,
+    "url": "https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform/actions/runs/43780559003",
+    "head_sha": "61f23edec62976158c1f2c92f4b5a16d02e0f5c9",
+    "status": "completed",
+    "conclusion": "success",
+    "tests": 54,
+    "failures": 0,
+    "errors": 0,
+    "dependency_packages_scanned": 145,
+    "known_reported_vulnerabilities": 0,
+    "publication_candidate_files": 152,
+    "historical_commits_scanned": 3,
+    "historical_blobs_scanned": 170,
+    "security_findings": 0,
+    "historical_security_findings": 0,
+    "broken_local_links": 0,
+    "optional_services_job": "skipped"
+  }
 }

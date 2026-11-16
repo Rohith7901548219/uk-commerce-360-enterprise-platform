@@ -1,12 +1,12 @@
 {
-  "reviewed_at": "2026-11-16T00:28:00.954974+00:00",
-  "head": "c013a1b7475453fe8148629872a9b22edb7bd897",
+  "reviewed_at": "2026-11-16T00:31:04.639107+00:00",
+  "head": "61f23edec62976158c1f2c92f4b5a16d02e0f5c9",
   "candidate_files": 152,
-  "historical_commits": 2,
-  "historical_blobs": 162,
+  "historical_commits": 3,
+  "historical_blobs": 170,
   "local_inventory": {
     "project_files": 194,
-    "kept_local_private_or_generated": 1874
+    "kept_local_private_or_generated": 1877
   },
   "findings": [],
   "historical_findings": [],

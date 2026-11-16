@@ -194,3 +194,18 @@ through the console entrypoint without private files. New hosted verification is
 next; do not label CI green until an actual successful run is confirmed. Local uv
 commands use workspace .local/uv-cache to respect sandbox writes. No raw data,
 credentials, local databases or model binaries were added to Git.
+
+Verified public release checkpoint (16 November 2026): source correction commit
+61f23edec62976158c1f2c92f4b5a16d02e0f5c9 is public on main and matches local HEAD.
+Public repository: https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform.
+Successful real hosted CI run: 43780559003. Downloaded quality-evidence artifacts
+confirm 54 tests, zero failures/errors, full history audit of three commits / 170
+blobs with zero findings or broken links, and 145 dependency packages with no known
+reported vulnerabilities. The optional service job was skipped; Docker/Redpanda,
+Desktop Power BI authoring and full Azure validation remain qualified as before.
+Online verification confirmed the full 152-file Git tree, rendered README, matching
+main SHA and five anonymous PNG downloads with byte-identical local screenshots.
+The additional file is publication verification evidence, not source/private data.
+Final documentation records these timestamped source-commit results; follow-up
+commits use the same normal push and quality workflow. No credentials, raw data,
+databases or model binaries were published, and original 0cedb01 history is preserved.

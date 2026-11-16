@@ -29,6 +29,9 @@ On 16 November 2026 the owner explicitly approved the security review and public
 publication to the selected target. This authorizes committing and publishing the
 reviewed project, then verifying the remote commit, README and GitHub Actions.
 Preserve that approval; do not request it again for the same reviewed scope.
+The public repository now exists and main tracks origin/main. Source publication,
+online README/screenshots and hosted quality CI have been verified; see
+docs/verification-report.md. Keep future changes history-preserving and audited.
 Docker Desktop installation has been authorized
 by the owner in this session. Do not run destructive resets without explicit scope.
 
