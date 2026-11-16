@@ -28,6 +28,7 @@ packages = ["src/commerce"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = ["services: requires PostgreSQL and Redpanda"]
 addopts = "-ra"
 

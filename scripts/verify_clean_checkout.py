@@ -87,9 +87,7 @@ def run():
             subprocess.run(args, cwd=checkout, env=env, check=True, capture_output=True)
         subprocess.run(
             [
-                sys.executable,
-                "-m",
-                "pytest",
+                str(Path(sys.executable).with_name("pytest.exe" if os.name == "nt" else "pytest")),
                 "-m",
                 "not services",
                 "-p",

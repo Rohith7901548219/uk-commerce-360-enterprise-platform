@@ -160,3 +160,37 @@ The active account was reverified as Rohith7901548219 and the target lookup agai
 returned HTTP 404. Proceed with safe staging, a history-preserving commit, public
 repository creation and normal push, then verify remote SHA, README and actual
 GitHub Actions. Never force-push. Stop if fresh security findings appear.
+
+Publication execution checkpoint (16 November 2026): approved source package committed
+as c013a1b7475453fe8148629872a9b22edb7bd897, preserving original 0cedb01 history.
+A fresh committed-history scan passed with 151 candidates, two commits / 162 blobs
+and zero findings. Public repository was created successfully at
+https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform and the clean
+HTTPS origin was configured. A normal push was rejected by GitHub because the CLI
+OAuth authorization lacks workflow scope for .github/workflows files. Do not remove
+the workflow or force-push to bypass this. The official gh auth refresh flow requesting
+workflow scope is awaiting browser approval. Public/security approval remains valid;
+do not ask for it again. After scope authorization succeeds, reverify account identity,
+retry the ordinary push, verify remote SHA and run actual GitHub Actions. No successful
+branch publication or hosted CI run has been verified yet. Credentials/device codes
+are not recorded in project files. Current progress-only edits may be committed with
+the final publication evidence after verification.
+
+Publication verification continuation: official workflow-scope refresh succeeded.
+GitHub API confirmed active Rohith7901548219 and repo/workflow scopes. Normal push
+published c013a1b7475453fe8148629872a9b22edb7bd897 to public main and remote SHA matched.
+The GitHub-rendered README contained its dashboard image; all five screenshots were
+fetched anonymously and SHA256-matched locally. The remote tree matched 151 source
+files. See docs/verification/publication-github.json for that timestamped first-push
+verification; later verification commits add evidence files without changing scope.
+
+First hosted Actions run 43780007650 failed during audit-test collection because
+pytest's console invocation did not import the root scripts namespace. Added pytest
+pythonpath=['.'] and made verify_clean_checkout.py invoke the real pytest console
+entrypoint instead of python -m pytest. Ruff and the full 54-test fixture suite now
+pass through the CI-style uv/pytest invocation with inherited PYTHONPATH removed.
+The isolated publication-only copy also passed all 54 tests and its history audit
+through the console entrypoint without private files. New hosted verification is
+next; do not label CI green until an actual successful run is confirmed. Local uv
+commands use workspace .local/uv-cache to respect sandbox writes. No raw data,
+credentials, local databases or model binaries were added to Git.

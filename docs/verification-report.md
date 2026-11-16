@@ -1,6 +1,6 @@
 # GitHub publication verification report
 
-Prepared 16 November 2026 (Asia/Kolkata). **Public publication approved; upload pending.**
+Prepared 16 November 2026 (Asia/Kolkata). **Published publicly; hosted CI correction in progress.**
 Target: Rohith7901548219/uk-commerce-360-enterprise-platform. The owner explicitly
 approved this security review and public publication after reviewing the prepared
 package. Repository creation, commit/push and remote verification are authorized.
@@ -25,7 +25,25 @@ below remain part of the review. Authentication does not approve publication.
 
 The owner explicitly selected Rohith7901548219 as the destination after the browser
 login identified that account. GitHub API account verification succeeded. A read-only
-lookup of the target repository returned HTTP 404; no repository was created.
+lookup initially returned HTTP 404. The approved public repository has now been
+created and the reviewed source commit pushed successfully:
+[public repository](https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform).
+
+## Online publication verification
+
+The first published commit is c013a1b7475453fe8148629872a9b22edb7bd897, preserving
+the original commit. GitHub's main-branch SHA matched local HEAD; the remote tree
+contained the same 151 files. GitHub's rendered README included the dashboard image.
+All five public PNGs were fetched without authentication and their bytes matched
+the local screenshots. Timestamped evidence is in
+[GitHub verification](verification/publication-github.json).
+
+The first [hosted run](https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform/actions/runs/43780007650)
+passed environment setup and Ruff, then exposed a pytest collection-path issue in
+the audit tests. The repository root is now explicitly configured on pytest's import
+path. The isolated-copy checker now invokes the pytest console script used by CI.
+The corrected console invocation passed all 54 fixture tests locally; the hosted
+rerun remains pending. Optional service CI has not been run.
 
 ## Scope and source inventory
 
@@ -43,8 +61,8 @@ No empty folders or superficial duplicated source trees were created.
 | Ruff | PASS after publication tooling changes |
 | Non-service Pytest | 54 passed, 2 service tests deselected; 13 upstream deprecation warnings |
 | Security guard regression | Removed historical fake credential still blocks publication; ignored local config remains on disk |
-| Working publication candidates | Refreshed scan: 151 candidates; no credential signatures, exact known local credentials or prohibited data paths detected |
-| Reachable Git history | One commit / 130 blobs scanned; no historical credential or private/generated-path findings |
+| Working publication candidates | Approved release: 151 files; publication evidence is audited before subsequent pushes; no detected credential or prohibited-path findings |
+| Reachable Git history | Original approval scanned one commit / 130 blobs; pre-push scan included two commits / 162 blobs, with no findings |
 | Reviewed sample exception | Only data/fixtures/retail.csv: nine synthetic rows, SHA256 5f3e3c9d689d368c4817e314ded28235d002cc8fb92832fb94af5b7eaa752556 |
 | Documentation links | Refreshed publication scan found no broken local links |
 | Existing screenshots | Capture timing corrected; all 11 completed pages checked and five genuine screenshots recaptured and manually reviewed |
@@ -56,8 +74,8 @@ No empty folders or superficial duplicated source trees were created.
 | Python compilation | PASS for source, app, scripts and tests |
 | Isolated publication copy | PASS: all 54 tests and the security audit passed without .env, raw data, model binaries or private credential environment variables; existing installed dependencies were reused |
 | GitHub CLI | Official checksum-verified portable CLI; official browser authorization completed |
-| Authentication / target remote | Verified as owner-approved Rohith7901548219; target repository lookup returned HTTP 404; no repository created, remote configured or project files uploaded |
-| GitHub-hosted CI | Not run yet; no published remote commit exists |
+| Authentication / target remote | Verified as owner-approved Rohith7901548219; public repository created, HTTPS origin configured and first source commit pushed; local/remote SHA match |
+| GitHub-hosted CI | First real run failed during audit-test collection; import-path correction passed 54 local tests; hosted rerun pending |
 
 New execution evidence is stored as publication-* artifacts under
 [verification](verification), including [tests](verification/publication-tests.xml),
