@@ -18,6 +18,19 @@ PAGES = [
     "Data Engineering & Model Monitoring",
     "About / Architecture / Data Methodology",
 ]
+COMPLETE_MARKERS = [
+    "Export management report",
+    "Export management report",
+    "Empty cells are unobserved future periods",
+    "Frequently purchased combinations",
+    "Calculate scenario",
+    "Temporal splits, leakage controls and model limitations",
+    "Export forecast CSV",
+    "Controls require the producer service",
+    "Calculate scenario",
+    "Operational source provenance",
+    "No commercial deployment, real customers",
+]
 
 
 def run():
@@ -31,8 +44,13 @@ def run():
         for index, name in enumerate(PAGES):
             page.get_by_text(name, exact=True).first.click(timeout=120000)
             page.get_by_role("heading", name=name, exact=True).wait_for(timeout=120000)
-            # Wait until Streamlit has completed this run, bounded by an observable metric/table/text.
-            page.wait_for_function("!document.querySelector('[data-testid=stStatusWidget]')", timeout=180000)
+            # A new heading appears before old Streamlit elements are removed. Require
+            # the page's final content marker and absence of stale elements as well.
+            page.get_by_text(COMPLETE_MARKERS[index], exact=False).last.wait_for(
+                state="attached", timeout=180000
+            )
+            page.wait_for_function("!document.querySelector('[data-stale=\"true\"]')", timeout=180000)
+            page.wait_for_timeout(500)
             errors = page.locator('[data-testid="stException"]').all_text_contents()
             if errors:
                 raise AssertionError(f"{name}: {errors}")
@@ -43,7 +61,14 @@ def run():
                     ),
                     full_page=True,
                 )
-            results.append({"page": name, "exception_count": len(errors), "url": page.url})
+            results.append(
+                {
+                    "page": name,
+                    "exception_count": len(errors),
+                    "completion_marker": COMPLETE_MARKERS[index],
+                    "url": page.url,
+                }
+            )
         browser.close()
     Path("artifacts/browser_smoke.json").write_text(json.dumps(results, indent=2))
     print(json.dumps(results, indent=2))

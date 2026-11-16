@@ -1,31 +1,57 @@
-name: Quality and service integration
-on: [push, pull_request]
+name: Quality and security
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      run_services:
+        description: Run optional PostgreSQL and Redpanda integration checks
+        type: boolean
+        default: false
 permissions:
   contents: read
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   python:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
       - uses: astral-sh/setup-uv@v6
         with: {version: '0.13.8', enable-cache: true}
-      - run: uv python install 3.12
-      - run: uv sync --frozen --extra dev --extra warehouse
-      - run: uv run ruff check .
-      - run: uv run pytest -m 'not services' --junitxml=artifacts/tests.xml
-      - run: uv run pip-audit --disable-pip --no-deps -r <(uv export --frozen --no-hashes --no-emit-project)
-        shell: bash
+      - run: uv python install 3.12.16
+      - run: uv sync --frozen --all-extras
+      - name: Lint
+        run: uv run --frozen --all-extras ruff check .
+      - name: Fixture-based unit, API, SQL, ML-feature and application checks
+        run: uv run --frozen --all-extras pytest -m 'not services' --junitxml=artifacts/tests.xml
+      - name: Publication and Git-history security checks
+        run: uv run --frozen --all-extras python scripts/audit_publication.py --output artifacts/publication-security.json
+      - name: Scan locked dependencies
+        run: |
+          uv export --frozen --all-extras --no-hashes --no-emit-project --output-file artifacts/requirements.txt --quiet
+          uv run --frozen --all-extras pip-audit --disable-pip --no-deps --cache-dir .local/audit-cache -r artifacts/requirements.txt --format json --output artifacts/dependency-audit.json
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: test-results, path: artifacts/tests.xml}
+        with:
+          name: quality-evidence
+          path: |
+            artifacts/tests.xml
+            artifacts/publication-security.json
+            artifacts/dependency-audit.json
   integration:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_services
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
         with: {version: '0.13.8'}
-      - run: uv sync --frozen --extra dev --extra warehouse
-      - run: uv run commerce bootstrap
+      - run: uv sync --frozen --all-extras
+      - run: uv run --frozen --all-extras commerce bootstrap
       - run: docker compose up -d postgres redpanda --wait
       - name: Real service tests
         run: |
@@ -35,6 +61,6 @@ jobs:
           export SERVICE_DATABASE_URL="postgresql+psycopg://commerce:${POSTGRES_PASSWORD}@127.0.0.1:5432/commerce"
           export SERVICE_KAFKA_BOOTSTRAP_SERVERS="127.0.0.1:19092"
           export CUSTOMER_HASH_KEY
-          uv run pytest -m services
+          uv run --frozen --all-extras pytest -m services --junitxml=artifacts/service-tests.xml
       - if: always()
         run: docker compose down

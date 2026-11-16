@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-11-15T23:08:30.428666+00:00",
+  "feature_count": 7,
+  "scored_customers_checked": 3477,
+  "maximum_score_difference": 4.999615263456825e-09,
+  "artifact_run_matches_database": true,
+  "feature_cutoff_check": true,
+  "selected_repurchase_model": "random_forest",
+  "repurchase_test_average_precision": 0.6473954597039129,
+  "selected_forecast_model": "holt_winters",
+  "forecast_final_test_wape": 0.2628499249300954,
+  "scope": "Trusted existing local artifact re-inference and stored evaluation inspection; no new training or broker verification"
+}

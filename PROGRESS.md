@@ -48,3 +48,115 @@ the genuine broker tests and full Compose stack afterwards. Direct UCI byte comp
 Desktop Power BI authoring and complete cloud validation are still outstanding. See
 docs/COMPLETION_CHECKLIST.md. No publication or billable cloud resource was created.
 Do not claim FULL PROJECT COMPLETION while those checks remain unverified.
+
+## GitHub publication preparation — 16 November 2026
+
+Owner requested publication to rohithmuskem/uk-commerce-360-enterprise-platform.
+Existing history is preserved. Public visibility still requires explicit owner
+confirmation after the reviewed package is ready. No remote creation/push is performed
+merely because browser login is completed.
+
+Implemented stricter data/secret exclusions, full-history publication scanning and
+regressions proving that removing a credential from the current file does not make
+its history safe. The reviewed nine-row synthetic fixture is the only CSV exception.
+Initial history (one commit, 130 blobs) and the current candidates had zero findings.
+Raw data, databases, model binaries and environment files are retained locally.
+
+Publication checks: 54 non-service tests passed; PostgreSQL integration and full
+reconciliation passed; 3,477 artifact scores matched the stored probabilities; 17 live
+API checks and all eleven completed browser pages passed; five screenshots recaptured;
+145 locked dependencies scanned with no known vulnerabilities; Compose configuration
+validated. See docs/verification-report.md and docs/verification/publication-*.
+
+README now explains a fresh checkout accurately and includes actual model/baseline
+results. Five requested named portfolio documents are written. Ordinary CI is
+credential-free and fixture-based; real service CI is explicitly opt-in and not
+claimed as passing without a run. Native Docker/broker, Power BI authoring and full
+Azure readiness remain qualified by the earlier limitations.
+
+Official portable GitHub CLI is available in .tools/github-cli/portable/bin/gh.exe
+with a verified release checksum; the system MSI install remained pending. Initial
+device authorization expired. Current next steps: finish official browser/device
+authorization, verify login is rohithmuskem, inspect any remote history, obtain the
+owner's explicit public-visibility approval, then commit/push without force and verify
+the remote SHA, README rendering and actual GitHub Actions run.
+
+Final local preparation checkpoint: isolated publication-only copy also passed all
+54 tests and its full-history audit with no .env/raw/model/private credentials supplied.
+All five screenshots were manually reviewed after recapture. Compose configuration
+and workflow YAML structure validate. Current candidates/history have zero findings;
+docs/verification/publication-security.json records the scoped scan.
+
+GitHub browser/device authorisation has not produced a usable saved CLI login:
+the first code expired and the replacement flow reached its context deadline. Do
+not treat the earlier "Login completed" user response as successful CLI authentication
+or as public visibility approval. A public/private visibility choice has now been
+requested, but no visibility approval has been granted yet.
+Remote existence/visibility/history must be inspected after authentication succeeds.
+No GitHub repository has been created or pushed, and the original commit/history is
+unchanged. All preparation changes remain local for review until the publishing gate.
+
+Latest continuation: the owner reaffirmed github.com/rohithmuskem as the destination.
+The official GitHub device page was opened for the user and the public/private choice
+was presented. CLI authentication still reports no saved login at the last check.
+Wait for actual authorization and an explicit visibility response, then inspect the
+target before creating/pushing. No repository has been created or pushed by this work.
+
+Authentication assistance checkpoint: the owner again provided the destination profile.
+Actual GitHub API authentication still fails; no upload access has been granted.
+The GitHub plugin was discovered and suggested as an alternative connection path,
+but is not confirmed installed or connected. If connected later, inspect its actual
+capabilities before relying on it to publish; do not repeat the installation request.
+Official CLI authorization is still waiting in the current flow. Do not publish
+publicly without the pending explicit visibility response. No repository was created,
+no remote was added, and no local changes were staged or committed during this check.
+
+Latest owner instruction: authenticate official GitHub CLI as rohithmuskem and prepare
+locally; do not upload until both visibility and security-review approval are explicit.
+AGENTS.md and docs/verification-report.md now record this stricter gate for public or
+private publication. The refreshed audit scanned 151 current candidates and all one
+commit / 130 historical blobs with zero findings and zero broken local links. No file
+exceeds GitHub's 100 MiB limit; the candidate package is approximately 1.6 MB.
+
+A fresh official browser/device flow was opened. After the owner's authorization
+completion response, the CLI was still waiting and the GitHub API account check still
+reported no saved login. A browser final-page clarification is pending; do not mark
+CLI authentication complete until the API returns rohithmuskem. Device codes and
+credentials are intentionally absent from this log. No repository was created,
+remote added, project commit made or file uploaded. Visibility and security-review
+approvals are both pending. Prior functional test results remain as recorded; this
+continuation changed documentation and refreshed the security scan only.
+
+Authentication checkpoint: a replacement official device flow completed successfully,
+but GitHub API /user identifies the active account as Rohith7901548219 (ID 145469998).
+Read-only lookup confirms rohithmuskem is a separate account (ID 217913860), not a
+username redirect. Do not confuse the two accounts or publish using the wrong one.
+A fresh official browser/device login is now pending; the user was instructed to
+switch the browser to rohithmuskem before authorization. The existing different-account
+CLI login was preserved, not deleted. Verify /user returns rohithmuskem after the
+new flow completes. Both security-review and visibility approvals remain pending.
+No repository was created, remote changed, source committed or project uploaded.
+
+Current publication checkpoint (16 November 2026): the owner could not access the
+earlier rohithmuskem account and explicitly selected "Use Rohith7901548219". This
+supersedes the prior destination only; it does not approve publication. The unused
+login flow for rohithmuskem was stopped. GitHub CLI is successfully authenticated
+as Rohith7901548219, confirmed through the GitHub /user API. The new target is
+Rohith7901548219/uk-commerce-360-enterprise-platform. A read-only authenticated target
+lookup returned HTTP 404. No repository was created and no project files uploaded.
+
+AGENTS.md, README clone instructions, the LinkedIn draft and verification report now
+use the owner-approved account. Historical progress entries and actual test-host
+metadata are preserved. Both explicit repository-visibility approval and approval
+of docs/verification-report.md remain required before any repository creation/upload.
+The project is locally prepared; await those approvals, then recheck the target and
+preserve any newly existing remote history. No staging/commit/push has been performed.
+
+Public publication approval (16 November 2026): the owner explicitly selected
+"Approve security review and publish publicly" for the prepared 151-file package at
+Rohith7901548219/uk-commerce-360-enterprise-platform. The approval covers both the
+security review and public visibility. Do not request the same approval again.
+The active account was reverified as Rohith7901548219 and the target lookup again
+returned HTTP 404. Proceed with safe staging, a history-preserving commit, public
+repository creation and normal push, then verify remote SHA, README and actual
+GitHub Actions. Never force-push. Stop if fresh security findings appear.

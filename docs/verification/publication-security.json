@@ -1,0 +1,21 @@
+{
+  "reviewed_at": "2026-11-16T00:16:20.530969+00:00",
+  "head": "0cedb0136ff4f9667691c81045001005ad2c9cf3",
+  "candidate_files": 151,
+  "historical_commits": 1,
+  "historical_blobs": 130,
+  "local_inventory": {
+    "project_files": 193,
+    "kept_local_private_or_generated": 1864
+  },
+  "findings": [],
+  "historical_findings": [],
+  "broken_local_links": [],
+  "reviewed_sample": {
+    "path": "data/fixtures/retail.csv",
+    "kind": "nine-row synthetic test fixture",
+    "sha256": "5f3e3c9d689d368c4817e314ded28235d002cc8fb92832fb94af5b7eaa752556"
+  },
+  "scope": "Current publication candidates and all reachable Git blobs: credential signatures, exact known local credentials, private/generated paths and local Markdown links. Workspace private data inventoried but retained. Installed runtimes excluded. Not a guarantee against every secret or an automated image/OCR privacy audit.",
+  "publication_blocked": false
+}

@@ -21,8 +21,8 @@ html, body, [class*="css"], [data-testid="stApp"] {font-family:'DM Sans',sans-se
 [data-testid="stApp"] {background:#f5f6fa;color:#17243b;}
 [data-testid="stSidebar"] {background:#111d33;}
 [data-testid="stSidebar"] * {color:#e4eaf5;}
-[data-testid="stSidebar"] [data-baseweb="input"] input {color:#17243b!important;-webkit-text-fill-color:#17243b!important;}
-[data-testid="stSidebar"] [data-baseweb="select"] div {color:#17243b!important;}
+[data-testid="stSidebar"] input {color:#17243b!important;-webkit-text-fill-color:#17243b!important;}
+[data-testid="stSidebar"] [data-baseweb="select"] div, [data-testid="stSidebar"] [data-baseweb="select"] span {color:#17243b!important;}
 [data-testid="stSidebar"] button p {color:#17243b!important;}
 [data-testid="stMetric"] {background:white;border:1px solid #e4e8ef;border-radius:12px;padding:19px 22px;}
 [data-testid="stMetricLabel"] {color:#66738b;font-size:.85rem;}

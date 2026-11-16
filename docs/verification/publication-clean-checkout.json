@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-11-15T23:26:39.424900+00:00",
+  "source_candidates": 149,
+  "private_environment_present": false,
+  "raw_data_present": false,
+  "model_binaries_present": false,
+  "private_credential_environment_removed": true,
+  "pytest_exit_code": 0,
+  "history_audit_exit_code": 0,
+  "scope": "Isolated copy of reviewed candidates using existing locked dependencies; no private local files or services supplied; not a hosted GitHub Actions run"
+}

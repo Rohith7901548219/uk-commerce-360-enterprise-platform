@@ -1,0 +1,106 @@
+{
+  "verified_at": "2026-11-15T23:12:21.029900+00:00",
+  "postgres_version": "PostgreSQL 17.12 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "counts": {
+    "raw_rows": 1067371,
+    "staged_rows": 1067371,
+    "accepted_rows": 1027017,
+    "fact_rows": 1027017,
+    "quarantined_rows": 6019,
+    "duplicate_rows": 34335
+  },
+  "fact_net_sales_gbp": "19013462.68",
+  "dbt_net_sales_gbp": "19013462.68",
+  "analytics_relations": [
+    "mart_customer_cohorts",
+    "mart_customer_retention",
+    "mart_customer_rfm",
+    "mart_daily_sales",
+    "mart_monthly_sales",
+    "mart_product_performance",
+    "stg_all_transactions"
+  ],
+  "explain_analyze": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Hashed",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 10467.22,
+        "Total Cost": 10521.51,
+        "Plan Rows": 4343,
+        "Plan Width": 57,
+        "Actual Startup Time": 98.688,
+        "Actual Total Time": 99.452,
+        "Actual Rows": 2974,
+        "Actual Loops": 1,
+        "Group Key": [
+          "customer_key"
+        ],
+        "Planned Partitions": 0,
+        "HashAgg Batches": 1,
+        "Peak Memory Usage": 1489,
+        "Disk Usage": 0,
+        "Shared Hit Blocks": 5355,
+        "Shared Read Blocks": 212,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Index Scan",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Scan Direction": "Forward",
+            "Index Name": "ix_fact_sales_transactions_date_key",
+            "Relation Name": "fact_sales_transactions",
+            "Alias": "fact_sales_transactions",
+            "Startup Cost": 0.42,
+            "Total Cost": 9407.98,
+            "Plan Rows": 211848,
+            "Plan Width": 31,
+            "Actual Startup Time": 0.282,
+            "Actual Total Time": 37.923,
+            "Actual Rows": 214275,
+            "Actual Loops": 1,
+            "Index Cond": "(date_key >= '2011-09-01'::date)",
+            "Rows Removed by Index Recheck": 0,
+            "Shared Hit Blocks": 5355,
+            "Shared Read Blocks": 212,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 28,
+        "Shared Read Blocks": 3,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.259,
+      "Triggers": [],
+      "Execution Time": 99.732
+    }
+  ]
+}

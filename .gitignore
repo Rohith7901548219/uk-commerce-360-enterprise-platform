@@ -1,11 +1,19 @@
 .venv/
 .tools/
 .env
+.env.*
+!.env.example
+venv/
 __pycache__/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
+node_modules/
+logs/
 *.egg-info/
 data/raw/
+data/private/
+data/downloads/
 data/warehouse/
 data/processed/
 artifacts/
@@ -15,4 +23,22 @@ dbt/target/
 dbt/logs/
 playwright-report/
 *.log
-!docs/**/*.log
+*.db
+*.sqlite
+*.sqlite3
+*.pkl
+*.joblib
+*.onnx
+*.xlsx
+*.xls
+*.csv
+*.parquet
+# Reviewed synthetic fixture only; never allow arbitrary source data through this exception.
+!data/fixtures/retail.csv
+# Local editor/system files and private key material.
+*.pem
+*.key
+*.pfx
+*.p12
+.DS_Store
+Thumbs.db

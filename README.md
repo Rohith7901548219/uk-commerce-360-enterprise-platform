@@ -15,13 +15,51 @@ transparent decision-support scenarios.
 [persistent progress](PROGRESS.md), [limitations/runbook](docs/deployment/RUNBOOK.md).
 Implementation and actual service verification are reported separately.
 
-## Run locally on Windows
+**Publication QA:** [current verification and security review](docs/verification-report.md).
+The application is a local development platform; this repository does not provide a
+hosted public dashboard.
 
-The current workspace already contains the processed historical dataset and trained
-artifacts. Its active backend is native PostgreSQL on port 5433; the start/stop scripts
-manage this project's database alongside the application. Start with:
+## Objectives and verified results
+
+Reconcile historical sales before making decisions; understand repeat purchasing and
+product returns; compare predictive methods without temporal leakage; and expose the
+evidence through usable business services and dashboards.
+
+| Evidence from the historical full-data run | Measured result |
+|---|---:|
+| Imported source lines | 1,067,371 |
+| Accepted / duplicate / quarantined lines | 1,027,017 / 34,335 / 6,019 |
+| Reconciled historical net sales | GBP 19,013,462.68 |
+| Identifiable positive-purchase customers | 5,878 |
+| Selected repurchase model test AP / ROC-AUC | Random Forest: 0.6474 / 0.7074 |
+| Repurchase recall at threshold 0.5 | 18.3% |
+| Selected forecast final-test WAPE | Holt-Winters: 26.28% |
+| Seasonal-naive final-test WAPE | 22.77% |
+| Original full-data dbt execution | 7 models + 10 data tests passed |
+
+Models were selected using validation/development results. Logistic regression had
+higher final-test AP (0.6583) and seasonal-naive had lower final-test WAPE than the
+selected candidates; the final test was not used to change the selection. These are
+historical analytical results, not revenue uplift, savings or present-day forecasts.
+
+| Component | Delivery status |
+|---|---|
+| ETL, PostgreSQL, SQL/dbt, customer/product analytics, models, API and eleven pages | Locally verified; see dated evidence |
+| Historical replay producer/consumer/DLQ and authenticated webhook adapter | Implemented; actual Redpanda roundtrip still unverified |
+| Docker Compose | Configuration supplied; full runtime remains unverified |
+| Power BI | M/DAX/calendar/theme/model/page assets; no authored PBIP/PBIX |
+| Azure | Architecture mapping and limited Bicep example; not deployed |
+
+## Install a fresh checkout on Windows
+
+The source package contains reviewed screenshots, aggregate results and a tiny synthetic
+test fixture. **It does not contain .env, databases, downloaded data, installed tools
+or trained model binaries.** Rebuild them using the supplied automation:
 
 ```powershell
+git clone https://github.com/Rohith7901548219/uk-commerce-360-enterprise-platform.git
+cd uk-commerce-360-enterprise-platform
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start.ps1
 ```
 
@@ -29,15 +67,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start.ps1
 * API documentation: http://127.0.0.1:8000/docs
 * API readiness: http://127.0.0.1:8000/ready
 
-For a fresh checkout, setup installs uv/Python **inside the workspace**, locks
-dependencies, creates local secrets, migrates the database, ingests data and trains:
+Setup installs uv/Python inside the workspace, synchronises the dependency lock,
+generates local secrets, applies migrations, ingests the official dataset and trains
+the models. Fresh non-Docker setup defaults to the documented SQLite analytics mode;
+PostgreSQL/dbt use the separate database configuration or Compose workflow.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/setup.ps1
-```
-
-This host cannot resolve UCI directly. A separately attributed mirror of the same
-workbook is supported explicitly:
+If direct UCI download is unavailable, opt into the separately attributed mirror:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/setup.ps1 -UseMirror
@@ -47,12 +82,25 @@ The mirror SHA256 is checked against its published metadata and recorded in a ma
 the application prominently labels mirror provenance. Direct upstream byte comparison
 remains pending. The nine-row synthetic fixture is **only for tests**, not the normal app.
 
+For the original prepared workspace, run only `scripts/start.ps1`: its ignored .env
+selects the already-built native PostgreSQL warehouse on port 5433. Start/stop scripts
+manage that project-owned cluster. Its runtime/data are not bundled with a fresh clone.
+
+## Tests and reproducibility
+
+Fixture-based checks need no source download, cloud service or private credentials:
+
 ```powershell
+powershell -ExecutionPolicy Bypass -File scripts/setup.ps1 -SkipData
 powershell -ExecutionPolicy Bypass -File scripts/verify.ps1
-powershell -ExecutionPolicy Bypass -File scripts/stop.ps1
 ```
 
-Cross-platform Python workflow: install uv, `uv sync --frozen --extra dev --extra warehouse`,
+The publication-preparation suite passed **54 tests** on 16 November 2026, including
+history-secret detection. See [the current report](docs/verification-report.md) for
+rerun results and service-specific qualifications. Stop the app with `scripts/stop.ps1`.
+Full-history security checks are available in `scripts/audit_publication.py`.
+
+Cross-platform Python workflow: install uv, `uv sync --frozen --all-extras`,
 `uv run commerce bootstrap`, `uv run alembic upgrade head`, `uv run commerce pipeline`,
 `uv run commerce train`. In separate terminals run `uv run uvicorn commerce.api:app`
 and `uv run streamlit run app/dashboard.py`. Store secrets in an ignored .env.
@@ -165,6 +213,9 @@ into historical facts. The monitor's counters come from stored events and worker
 heartbeats; unavailable lag remains unknown. An authenticated external webhook adapter
 supports authorised new events without claiming an actual retailer integration.
 
+The intended event interface is **HISTORICAL TRANSACTION REPLAY — DEMONSTRATION**.
+It must not be presented as genuine current UK retail activity.
+
 Power BI [M/DAX/theme/model assets](dashboards/powerbi) are supplied with exact assembly
 instructions. No PBIX or validated PBIP is fabricated. The Streamlit app works independently.
 
@@ -185,6 +236,26 @@ tests/              unit, API, SQL, UI and genuine-service tests
 .github/workflows/  locked environment, lint, tests, audit and service CI
 ```
 
+ETL, streaming, analytics, ML and API code live in the cohesive `src/commerce` Python
+package; they are not duplicated into empty root folders for presentation.
+
+## CI and skills demonstrated
+
+GitHub Actions runs Ruff, fixture-based Python/API/SQL/ML-feature/application tests,
+Git-history/publication checks and a locked dependency audit without private dataset
+access or user-supplied secrets. The genuine PostgreSQL/Redpanda job is an explicit
+manual opt-in; its existence is not a claim of successful service verification.
+
+| Skill | Reviewable evidence |
+|---|---|
+| Data analysis / commercial insight | Defined KPIs, revenue/returns reconciliation, cohorts, RFM and product intelligence |
+| Python / data engineering | Chunked auditable ETL, pseudonymisation, constraints, idempotency and migrations |
+| Advanced SQL / analytics engineering | Windows, CTEs, contributions, associations, YoY and dbt marts/tests |
+| Data science / ML | Chronological labels/features, baseline comparisons, calibration and rolling forecasts |
+| API / application engineering | FastAPI validation/auth/pagination and eleven Streamlit pages |
+| BI / business analysis | Power BI reproducible assets; requirements, acceptance criteria and governance |
+| DevOps / QA | Locked dependencies, Windows automation, Compose source, CI and explicit verification evidence |
+
 ## Limitations and next steps
 
 The historical source has missing IDs, unmatched returns, variable descriptions and an
@@ -200,7 +271,10 @@ catalogue governance, clustered uncertainty estimates, threshold/cost evaluation
 authorised experiments with genuine campaign data.
 
 [Business analysis](docs/business-analysis/BUSINESS_ANALYSIS.md) ·
-[CV/LinkedIn copy](docs/portfolio/PROFILES_AND_CV.md) ·
-[Interview/demo script](docs/portfolio/INTERVIEW_AND_DEMO.md).
+[LinkedIn description](docs/portfolio/linkedin-description.md) ·
+[UK CV bullets](docs/portfolio/cv-project-bullets.md) ·
+[Technical case study](docs/portfolio/technical-case-study.md) ·
+[Interview questions](docs/portfolio/interview-questions.md) ·
+[Demo script](docs/portfolio/demo-script.md).
 
 Code: [MIT](LICENSE). Dataset and dependencies retain their own licences.
